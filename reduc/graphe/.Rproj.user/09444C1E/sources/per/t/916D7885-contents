@@ -1,0 +1,3 @@
+data <- read.table("../gcc/unroll_8/gcc8_unroll_mbps_allflags.txt", header = FALSE)
+write.csv(data, "gcc_8_unroll_mbps.csv", row.names = FALSE)
+

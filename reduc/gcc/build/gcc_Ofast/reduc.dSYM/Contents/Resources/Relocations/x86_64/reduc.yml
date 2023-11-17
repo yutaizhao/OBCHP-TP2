@@ -1,0 +1,17 @@
+---
+triple:          'x86_64-apple-darwin'
+binary-path:     reduc
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100002B20, symSize: 0x680 }
+  - { offsetInCU: 0x21E, offset: 0x21E, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100002B20, symSize: 0x680 }
+  - { offsetInCU: 0x68D, offset: 0x68D, size: 0x8, addend: 0x0, symName: _run_benchmark, symObjAddr: 0x680, symBinAddr: 0x1000031A0, symSize: 0x34C }
+  - { offsetInCU: 0x26, offset: 0x87C, size: 0x8, addend: 0x0, symName: _print_f64, symObjAddr: 0x0, symBinAddr: 0x1000034F0, symSize: 0x80 }
+  - { offsetInCU: 0x53, offset: 0x8A9, size: 0x8, addend: 0x0, symName: _print_f64, symObjAddr: 0x0, symBinAddr: 0x1000034F0, symSize: 0x80 }
+  - { offsetInCU: 0xA4, offset: 0x8FA, size: 0x8, addend: 0x0, symName: _init_f64, symObjAddr: 0x80, symBinAddr: 0x100003570, symSize: 0x190 }
+  - { offsetInCU: 0x174, offset: 0x9CA, size: 0x8, addend: 0x0, symName: _sort_f64, symObjAddr: 0x210, symBinAddr: 0x100003700, symSize: 0x60 }
+  - { offsetInCU: 0x1F9, offset: 0xA4F, size: 0x8, addend: 0x0, symName: _mean_f64, symObjAddr: 0x270, symBinAddr: 0x100003760, symSize: 0x160 }
+  - { offsetInCU: 0x292, offset: 0xAE8, size: 0x8, addend: 0x0, symName: _stddev_f64, symObjAddr: 0x3D0, symBinAddr: 0x1000038C0, symSize: 0x28A }
+  - { offsetInCU: 0x26, offset: 0xBCA, size: 0x8, addend: 0x0, symName: _reduc_base, symObjAddr: 0x0, symBinAddr: 0x100003B50, symSize: 0x130 }
+  - { offsetInCU: 0x33, offset: 0xBD7, size: 0x8, addend: 0x0, symName: _reduc_base, symObjAddr: 0x0, symBinAddr: 0x100003B50, symSize: 0x130 }
+  - { offsetInCU: 0x8B, offset: 0xC2F, size: 0x8, addend: 0x0, symName: _reduc_unroll, symObjAddr: 0x130, symBinAddr: 0x100003C80, symSize: 0x146 }
+...

@@ -1,0 +1,23 @@
+#clang --version >> compiler_info.txt
+Homebrew clang version 14.0.6
+Target: x86_64-apple-darwin23.0.0
+Thread model: posix
+InstalledDir: /usr/local/opt/llvm@14/bin
+
+#brew info gcc
+==> gcc: stable 13.2.0 (bottled), HEAD
+GNU compiler collection
+https://gcc.gnu.org/
+/usr/local/Cellar/gcc/13.2.0 (1,590 files, 421.8MB) *
+  Poured from bottle using the formulae.brew.sh API on 2023-09-28 at 09:48:39
+From: https://github.com/Homebrew/homebrew-core/blob/HEAD/Formula/g/gcc.rb
+License: GPL-3.0-or-later with GCC-exception-3.1
+==> Dependencies
+Required: gmp, isl, libmpc, mpfr, zstd
+==> Options
+--HEAD
+	Install HEAD version
+==> Analytics
+install: 104,637 (30 days), 346,519 (90 days), 786,514 (365 days)
+install-on-request: 47,898 (30 days), 167,423 (90 days), 390,527 (365 days)
+build-error: 187 (30 days)

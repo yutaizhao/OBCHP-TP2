@@ -1,0 +1,201 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+```{r}
+data1 <- read.table("../clang/base_8/clang8_base_med_mbps_allflags.txt")
+data2 <- read.table("../clang/unroll_8/clang8_unroll_med_mbps_allflags.txt")
+write.csv(data1, "clang_8_base_mbps.csv")
+write.csv(data2, "clang_8_unroll_mbps.csv")
+data1m <-as.matrix(data1)
+data2m <-as.matrix(data2)
+
+data <- cbind(data1m,data2m)
+
+```
+
+
+```{r}
+colnames(data) <-  c("base","unroll")
+rownames(data) <-  c("-O0", "-O1","-O2","-O3","-Ofast")
+```
+
+```{r}
+png(file = "dotprod mbps (clang).png", width = 1920, height = 1080, units = "px", res = 300)
+
+barplot(t(as.matrix(data)), beside = TRUE, col = terrain.colors(2), xlab = "Flags", ylab = "Mbps", ylim =c(0,20000)) 
+
+title("dotprod mbps (clang)")
+legend("topleft", colnames(data), cex = 0.5, bty = "n", fill = terrain.colors(2))
+dev.off()
+
+ 
+```
+
+
+```{r}
+data1 <- read.table("../gcc/base_8/gcc8_base_med_mbps_allflags.txt")
+data2 <- read.table("../gcc/unroll_8/gcc8_unroll_med_mbps_allflags.txt")
+write.csv(data1, "gcc_8_base_mbps.csv")
+write.csv(data2, "gcc_8_unroll_mbps.csv")
+data1m <-as.matrix(data1)
+data2m <-as.matrix(data2)
+
+data <- cbind(data1m,data2m)
+
+```
+
+```{r}
+colnames(data) <-  c("base","unroll")
+rownames(data) <-  c("-O0", "-O1","-O2","-O3","-Ofast")
+```
+
+```{r}
+png(file = "dotprod mbps (gcc).png", width = 1920, height = 1080, units = "px", res = 300)
+
+barplot(t(as.matrix(data)), beside = TRUE, col = terrain.colors(2), xlab = "Flags", ylab = "Mbps", ylim =c(0,20000)) 
+
+title("dotprod mbps (gcc)")
+legend("topleft", colnames(data), cex = 0.5, bty = "n", fill = terrain.colors(2))
+dev.off()
+ 
+```
+
+```{r}
+data1 <- read.table("../clang/base_8/clang8_base_med_mbps_allflags.txt")
+data2 <- read.table("../gcc/base_8/gcc8_base_med_mbps_allflags.txt")
+write.csv(data1, "clang_8_base_mbps.csv")
+write.csv(data2, "gcc_8_base_mbps.csv")
+data1m <-as.matrix(data1)
+data2m <-as.matrix(data2)
+
+data <- cbind(data1m,data2m)
+
+```
+
+```{r}
+colnames(data) <-  c("clang","gcc")
+rownames(data) <-  c("-O0", "-O1","-O2","-O3","-Ofast")
+```
+
+```{r}
+
+png(file = "dotprod mbps (base).png", width = 1920, height = 1080, units = "px", res = 300)
+barplot(t(as.matrix(data)), beside = TRUE, col = terrain.colors(2), xlab = "Flags", ylab = "Mbps", ylim =c(0,20000)) 
+
+title("dotprod mbps (base)")
+legend("topleft", colnames(data), cex = 0.5, bty = "n", fill = terrain.colors(2))
+dev.off()
+ 
+```
+
+
+```{r}
+data1 <- read.table("../clang/unroll_8/clang8_unroll_med_mbps_allflags.txt")
+data2 <- read.table("../gcc/unroll_8/gcc8_unroll_med_mbps_allflags.txt")
+write.csv(data1, "clang_8_unroll_mbps.csv")
+write.csv(data2, "gcc_8_unroll_mbps.csv")
+data1m <-as.matrix(data1)
+data2m <-as.matrix(data2)
+
+data <- cbind(data1m,data2m)
+
+```
+
+```{r}
+colnames(data) <-  c("clang","gcc")
+rownames(data) <-  c("-O0", "-O1","-O2","-O3","-Ofast")
+```
+
+```{r}
+
+png(file = "dotprod mbps (unroll).png", width = 1920, height = 1080, units = "px", res = 300)
+barplot(t(as.matrix(data)), beside = TRUE, col = terrain.colors(2), xlab = "Flags", ylab = "Mbps", ylim =c(0,20000)) 
+
+title("dotprod mbps (unroll)")
+legend("topleft", colnames(data), cex = 0.5, bty = "n", fill = terrain.colors(2))
+dev.off()
+ 
+```
+
+
+
+
+```{r}
+data1 <- read.table("../clang/base_8/clang8_base_mean_allflags.txt")
+data2 <- read.table("../clang/base_8/clang8_base_stddev_PURE_allflags.txt")
+write.csv(data1, "clang_8_base_mean.csv")
+write.csv(data2, "clang_8_base_stddev.csv")
+
+data1m <-as.matrix(data1)
+data2m <-as.matrix(data2)
+
+data_stddev_base = (data2m*100)/data1m
+
+data3 <- read.table("../clang/unroll_8/clang8_unroll_mean_allflags.txt")
+data4 <- read.table("../clang/unroll_8/clang8_unroll_stddev_PURE_allflags.txt")
+write.csv(data3, "clang_8_unroll_mean.csv")
+write.csv(data4, "clang_8_unroll_stddev.csv")
+
+data3m <-as.matrix(data3)
+data4m <-as.matrix(data4)
+
+data_stddev_unroll = (data4m*100)/data3m
+
+```
+
+```{r}
+data <- rbind(data_stddev_base,data_stddev_unroll)
+colnames(data) <-  c("-O0", "-O1","-O2","-O3","-Ofast")
+```
+
+```{r}
+png(file = "dotprod stddev (clang).png", width = 1920, height = 1080, units = "px", res = 300)
+barplot(t(as.matrix(data)), beside = FALSE, col = heat.colors(5), xlab = "n-ème exécution", ylab = "stddev", ylim =c(0,100)) 
+
+title("dotprod stddev (clang)")
+legend("topleft", colnames(data), cex = 0.5, bty = "n", fill = heat.colors(5))
+ dev.off()
+```
+
+```{r}
+data1 <- read.table("../gcc/base_8/gcc8_base_mean_allflags.txt")
+data2 <- read.table("../gcc/base_8/gcc8_base_stddev_PURE_allflags.txt")
+write.csv(data1, "gcc_8_base_mean.csv")
+write.csv(data2, "gcc_8_base_stddev.csv")
+
+data1m <-as.matrix(data1)
+data2m <-as.matrix(data2)
+
+data_stddev_base = (data2m*100)/data1m
+
+data3 <- read.table("../gcc/unroll_8/gcc8_unroll_mean_allflags.txt")
+data4 <- read.table("../gcc/unroll_8/gcc8_unroll_stddev_PURE_allflags.txt")
+write.csv(data3, "gcc_8_unroll_mean.csv")
+write.csv(data4, "gcc_8_unroll_stddev.csv")
+
+data3m <-as.matrix(data3)
+data4m <-as.matrix(data4)
+
+data_stddev_unroll = (data4m*100)/data3m
+
+```
+
+```{r}
+data <- rbind(data_stddev_base,data_stddev_unroll)
+colnames(data) <-  c("-O0", "-O1","-O2","-O3","-Ofast")
+```
+
+```{r}
+png(file = "dotprod stddev (gcc).png", width = 1920, height = 1080, units = "px", res = 300)
+barplot(t(as.matrix(data)), beside = FALSE, col = heat.colors(5), xlab = "n-ème exécution", ylab = "stddev", ylim =c(0,100)) 
+
+title("dotprod stddev (gcc)")
+legend("topleft", colnames(data), cex = 0.5, bty = "n", fill = heat.colors(5))
+ dev.off()
+```
